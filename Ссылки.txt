@@ -1,0 +1,10 @@
+https://developers.google.com/maps/documentation/javascript/adding-a-google-map?hl=ru
+
+https://developers.google.com/maps/documentation/javascript/overview?hl=ru#js_api_loader_package
+
+https://developers.google.com/maps/api-security-best-practices?hl=ru#restricting-api-keys
+
+https://developers.google.com/maps/documentation/javascript/geolocation?hl=ru#maps_map_geolocation-javascript
+
+https://w3c.github.io/geolocation-api/#get-current-position
+
