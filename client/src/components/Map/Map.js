@@ -1,7 +1,8 @@
 import { useRef, useCallback } from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import "./Map.css";
-import { mapThemeLight2, mapThemeDark } from "./Theme";
+
+import { mapThemeLight1, mapThemeDark } from "./Theme";
 
 const containerStyle = {
   width: "940px",
@@ -24,11 +25,10 @@ const defaultOptions = {
   scrollwheel: true,
   disableDoubleClickZoom: false,
   fullscreenControl: false,
-  styles: mapThemeLight2,
+  /* styles: mapThemeDark, */
 };
 
-export const Map = ({ center }) => {
-  console.log("center", center);
+export const Map = ({ center, onMapClick }) => {
   const mapRef = useRef(undefined);
   const onLoad = useCallback(function callback(map) {
     mapRef.current = map;
@@ -36,6 +36,10 @@ export const Map = ({ center }) => {
   const onUnmount = useCallback(function callback(map) {
     mapRef.current = undefined;
   }, []);
+
+  const handleClick = (pos) => {
+    onMapClick({ lat: pos.latLng.lat(), lng: pos.latLng.lng() });
+  };
 
   return (
     <div className="container">
@@ -46,8 +50,9 @@ export const Map = ({ center }) => {
         onLoad={onLoad}
         onUnmount={onUnmount}
         options={defaultOptions}
+        onClick={handleClick}
       >
-        <Marker position={center} title={"Marker"} />
+        <Marker position={center} />
       </GoogleMap>
     </div>
   );

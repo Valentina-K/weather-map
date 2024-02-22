@@ -23,12 +23,19 @@ const LeftBlock = () => {
       payload: { lat: lat, lng: lng },
     });
   }, []);
+
+  const onMapClick = useCallback(({ lat, lng }) => {
+    dispatch({
+      type: "current",
+      payload: { lat: lat, lng: lng },
+    });
+  }, []);
   return (
     <div className="wrapContainer">
       <div className="searchContainer">
         <PlacesAutocomplete isLoaded={isLoaded} onSelect={onPlaceSelect} />
       </div>
-      {isLoaded ? <Map center={state} /> : <p>Hi</p>}
+      {isLoaded ? <Map center={state} onMapClick={onMapClick} /> : <p>Hi</p>}
       {/* <Week /> */}
     </div>
   );

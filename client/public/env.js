@@ -1,0 +1,4 @@
+window.env = {
+  "REACT_APP_MAP_KEY": "AIzaSyC4frKxSqsXpbkHvEnF09jXy9-J53WW5A4",
+  "REACT_APP_WEATHER_KEY": "aad89bf41d09dd29698491434c3ce2ff"
+};

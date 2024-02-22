@@ -38,7 +38,6 @@ export const PlacesAutocomplete = ({ isLoaded, onSelect }) => {
       getGeocode({ address: description }).then((results) => {
         const { lat, lng } = getLatLng(results[0]);
         onSelect({ lat, lng });
-        console.log("📍 Coordinates: ", { lat, lng });
       });
     };
 
