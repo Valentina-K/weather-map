@@ -1,0 +1,14 @@
+.days-list{
+    display: flex;
+    padding: 1px;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-shrink: 0;
+    color: #563F02;
+    text-transform: uppercase;
+}
+
+.days-item{
+    font-size: 24px;
+    text-transform: uppercase;
+}

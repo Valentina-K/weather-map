@@ -1,0 +1,12 @@
+.hourly{
+    display: flex;
+    padding: 8px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 12px;
+    opacity: 0.8;
+    background: radial-gradient(2599.77% 127.47% at 1.6% 13.68%, #FCE513 0%, #FCE513 0.01%, #FFFEFE 55%, #DCFE0C 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    overflow-x: scroll;
+}

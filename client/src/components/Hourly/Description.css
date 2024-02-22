@@ -1,0 +1,8 @@
+.description{
+    display: flex;
+    padding: 0px 1px;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #3F1705;
+    font-style: italic;
+}

@@ -1,0 +1,7 @@
+.dates-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #3F1705;
+}
+
