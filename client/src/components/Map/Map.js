@@ -1,5 +1,7 @@
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useReducer } from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
+import { getAddressFromCoordinates } from "../../utils/geocoding";
+import { initialPosition, reducer } from "../../store/store";
 import "./Map.css";
 
 import { mapThemeLight1, mapThemeDark } from "./Theme";
@@ -29,6 +31,7 @@ const defaultOptions = {
 };
 
 export const Map = ({ center, onMapClick }) => {
+  const [state, dispatch] = useReducer(reducer, initialPosition);
   const mapRef = useRef(undefined);
   const onLoad = useCallback(function callback(map) {
     mapRef.current = map;
@@ -38,6 +41,22 @@ export const Map = ({ center, onMapClick }) => {
   }, []);
 
   const handleClick = (pos) => {
+    const lat = pos.latLng.lat();
+    const lng = pos.latLng.lng();
+    getAddressFromCoordinates({ lat, lng })
+      .then((results) => {
+        for (const item of results) {
+          const isPlace = item.types.some((type) => type === "locality");
+          if (isPlace) {
+            dispatch({
+              type: "setPlace",
+              payload: { place: item.long_name },
+            });
+            return;
+          }
+        }
+      })
+      .catch(console.error);
     onMapClick({ lat: pos.latLng.lat(), lng: pos.latLng.lng() });
   };
 

@@ -6,7 +6,7 @@ export const MainContent = () => {
   return (
     <div className="main-block">
       <LeftBlock />
-      {/* <RightBlock /> */}
+      {<RightBlock />}
     </div>
   );
 };

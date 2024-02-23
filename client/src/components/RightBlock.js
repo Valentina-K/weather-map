@@ -6,7 +6,7 @@ const RightBlock = () => {
   return (
     <div>
       <CityInfo />
-      <Details />
+      {/* <Details /> */}
     </div>
   );
 };
