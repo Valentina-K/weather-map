@@ -3,7 +3,6 @@ import env from "react-dotenv";
 const MAP_KEY = env.REACT_APP_MAP_KEY;
 export function getAddressFromCoordinates(position) {
   const { lat, lng } = position;
-  console.log(lat);
   return new Promise((resolve, reject) => {
     fetch(
       "https://maps.googleapis.com/maps/api/geocode/json?latlng=" +
