@@ -6,14 +6,14 @@ export const Header = () => {
     <div className="header">
       <div className="header-img-wrap">
         <img
-          src="/images/snow.png"
-          alt="snow"
-          style={{ width: 140, height: 140 }}
+          src="/images/sun.png"
+          alt="sun"
+          style={{ width: 110, height: 110 }}
         />
         <img
           src="/images/снег.png"
           alt="snow cloud"
-          style={{ width: 128, height: 128 }}
+          style={{ width: 110, height: 110 }}
         />
       </div>
       <div>
@@ -24,12 +24,7 @@ export const Header = () => {
         <img
           src="/images/rain.png"
           alt="rain"
-          style={{ width: 125, height: 125 }}
-        />
-        <img
-          src="/images/sun.png"
-          alt="sun"
-          style={{ width: 130, height: 130 }}
+          style={{ width: 110, height: 110 }}
         />
       </div>
     </div>

@@ -1,15 +1,17 @@
-import React, { useReducer } from "react";
-import { initialPosition, reducer } from "../store/store";
+import { useSelector } from "react-redux";
+import { getCurrentWeather, getPlace } from "../redux/selectors";
 import "./CityInfo.css";
 
-const CityInfo = ({ themperature }) => {
-  const [state, dispatch] = useReducer(reducer, initialPosition);
+const CityInfo = () => {
+  const { city } = useSelector(getPlace);
+  const current = useSelector(getCurrentWeather);
+
   const date = new Date();
   return (
     <div className="city-info">
-      {<p className="city-info__date">{date.toLocaleDateString()}</p>}
-      <h2 className="city-info__title">{state.place}</h2>
-      {/* <p className="city-info__themp">{themperature}</p> */}
+      <p className="city-info__date">{date.toLocaleDateString()}</p>
+      <h2 className="city-info__title">{city}</h2>
+      <p className="city-info__themp">{Math.round(current.main.temp)} °C</p>
     </div>
   );
 };

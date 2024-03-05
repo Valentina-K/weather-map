@@ -1,14 +1,20 @@
-.days-list{
-    display: flex;
-    padding: 1px;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-shrink: 0;
-    color: #563F02;
-    text-transform: uppercase;
+.days-list {
+  padding: 1px;
+  color: #563f02;
+  text-transform: uppercase;
 }
 
-.days-item{
-    font-size: 24px;
-    text-transform: uppercase;
+.dayWeek {
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.dateWeek {
+  color: #3f1705;
+}
+
+.tempWeek {
+  color: #4e3a07;
+  font-size: 32px;
+  font-weight: 500;
 }

@@ -1,6 +1,4 @@
-import env from "react-dotenv";
-
-const MAP_KEY = env.REACT_APP_MAP_KEY;
+const MAP_KEY = process.env.REACT_APP_MAP_KEY;
 export function getAddressFromCoordinates(position) {
   const { lat, lng } = position;
   return new Promise((resolve, reject) => {

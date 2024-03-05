@@ -4,9 +4,9 @@ import Details from "./Details";
 
 const RightBlock = () => {
   return (
-    <div>
+    <div style={{ maxWidth: "370px" }}>
       <CityInfo />
-      {/* <Details /> */}
+      <Details />
     </div>
   );
 };

@@ -1,13 +1,15 @@
-import { useRef, useCallback, useReducer } from "react";
+import { useRef, useCallback } from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
+import { useDispatch, useSelector } from "react-redux";
+import { updatePlace } from "../../redux/action";
+import { getPlace } from "../../redux/selectors";
 import { getAddressFromCoordinates } from "../../utils/geocoding";
-import { initialPosition, reducer } from "../../store/store";
 import "./Map.css";
 
-import { mapThemeLight1, mapThemeDark } from "./Theme";
+//import { mapThemeLight1, mapThemeDark } from "./Theme";
 
 const containerStyle = {
-  width: "940px",
+  width: "840px",
   height: "650px",
   borderRadius: "12px",
   paddingBottom: "16px",
@@ -30,8 +32,9 @@ const defaultOptions = {
   /* styles: mapThemeDark, */
 };
 
-export const Map = ({ center, onMapClick }) => {
-  const [state, dispatch] = useReducer(reducer, initialPosition);
+export const Map = () => {
+  const { lat, lng } = useSelector(getPlace);
+  const dispatch = useDispatch();
   const mapRef = useRef(undefined);
   const onLoad = useCallback(function callback(map) {
     mapRef.current = map;
@@ -48,30 +51,26 @@ export const Map = ({ center, onMapClick }) => {
         for (const item of results) {
           const isPlace = item.types.some((type) => type === "locality");
           if (isPlace) {
-            dispatch({
-              type: "setPlace",
-              payload: { place: item.long_name },
-            });
+            dispatch(updatePlace({ lat, lng, city: item.long_name }));
             return;
           }
         }
       })
       .catch(console.error);
-    onMapClick({ lat: pos.latLng.lat(), lng: pos.latLng.lng() });
   };
 
   return (
     <div className="container">
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={center}
+        center={{ lat, lng }}
         zoom={10}
         onLoad={onLoad}
         onUnmount={onUnmount}
         options={defaultOptions}
         onClick={handleClick}
       >
-        <Marker position={center} />
+        <Marker position={{ lat, lng }} icon={{ url: "/images/marker.png" }} />
       </GoogleMap>
     </div>
   );

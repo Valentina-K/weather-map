@@ -4,9 +4,12 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
+import { useDispatch } from "react-redux";
+import { updatePlace } from "../../redux/action";
 import "./Autocomplete.css";
 
-export const PlacesAutocomplete = ({ isLoaded, onSelect }) => {
+export const PlacesAutocomplete = ({ isLoaded }) => {
+  const dispatch = useDispatch();
   const {
     ready,
     value,
@@ -18,6 +21,7 @@ export const PlacesAutocomplete = ({ isLoaded, onSelect }) => {
     initOnMount: false,
     debounce: 300,
   });
+
   const ref = useOnclickOutside(() => {
     setValue("", false);
     clearSuggestions();
@@ -37,7 +41,13 @@ export const PlacesAutocomplete = ({ isLoaded, onSelect }) => {
       // Get latitude and longitude via utility functions
       getGeocode({ address: description }).then((results) => {
         const { lat, lng } = getLatLng(results[0]);
-        onSelect({ lat, lng });
+        dispatch(
+          updatePlace({
+            lat,
+            lng,
+            city: description.slice(0, description.indexOf(",")),
+          })
+        );
       });
     };
 
@@ -69,7 +79,7 @@ export const PlacesAutocomplete = ({ isLoaded, onSelect }) => {
         value={value}
         onChange={handleInput}
         disabled={!ready}
-        placeholder="Where are you going?"
+        placeholder="Where will we watch?"
         className="autocomplete"
       />
       {/* We can use the "status" to decide whether we should display the dropdown or not */}

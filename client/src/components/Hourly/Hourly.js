@@ -1,18 +1,24 @@
-import React from "react";
+import { useSelector } from "react-redux";
 import "./Hourly.css";
 import Hours from "./Hours";
-import Description from "./Description";
-import Icons from "./Icons";
-import Themperature from "./Themperature";
+import { getWeather } from "../../redux/selectors";
 
 const Hourly = () => {
+  const hourlyList = useSelector(getWeather);
+  const list = hourlyList.slice(0, 8);
   return (
-    <div className="hourly">
-      <Hours />
-      <Description />
-      <Icons />
-      <Themperature />
-    </div>
+    <ul className="hourly">
+      {list.map((item) => (
+        <li key={item.dt} className="hourlyItem">
+          <Hours
+            date={item.dt}
+            temp={item.main.temp}
+            descr={item.weather[0].description}
+            icon={item.weather[0].icon}
+          />
+        </li>
+      ))}
+    </ul>
   );
 };
 

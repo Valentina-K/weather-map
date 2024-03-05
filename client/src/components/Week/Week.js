@@ -1,18 +1,26 @@
 import React from "react";
 import "./Week.css";
+import { useSelector } from "react-redux";
+import { getWeather } from "../../redux/selectors";
 import DaysOfWeek from "./DaysOfWeek";
-import Dates from "./Dates";
-import Icons from "./Icons";
-import Themperatures from "./Themperatures";
 
 const Week = () => {
+  const list = useSelector(getWeather);
+  const filterList = list.filter(
+    (item, index) => index === 0 || index % 8 === 0
+  );
   return (
-    <div className="week">
-      <DaysOfWeek />
-      <Dates />
-      <Icons />
-      <Themperatures />
-    </div>
+    <ul className="week">
+      {filterList.map((item) => (
+        <li key={item.dt} className="week-item">
+          <DaysOfWeek
+            date={item.dt}
+            temp={item.main.temp}
+            icon={item.weather[0].icon}
+          />
+        </li>
+      ))}
+    </ul>
   );
 };
 
