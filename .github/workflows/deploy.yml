@@ -16,7 +16,9 @@ jobs:
           npm install
           npm run lint:js
           npm run build
-
+        env: 
+          REACT_APP_MAP_KEY: ${{secrets.REACT_APP_MAP_KEY}},
+          REACT_APP_WEATHER_KEY: ${{secrets.REACT_APP_WEATHER_KEY}}
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
