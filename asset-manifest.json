@@ -4,7 +4,8 @@
     "main.js": "/weather-map/static/js/main.6ab150f1.js",
     "index.html": "/weather-map/index.html",
     "main.02db11b6.css.map": "/weather-map/static/css/main.02db11b6.css.map",
-    "main.6ab150f1.js.map": "/weather-map/static/js/main.6ab150f1.js.map"
+    "main.6ab150f1.js.map": "/weather-map/static/js/main.6ab150f1.js.map",
+    "rain.png": "/weather-map/images/rain.png"
   },
   "entrypoints": [
     "static/css/main.02db11b6.css",
